@@ -1,0 +1,105 @@
+/* V9.2 — hero banner CTA alignment refinement.
+   Keep this stylesheet after layout-fixes.css so it wins mobile overrides. */
+.hero-actions{
+  display:flex;
+  align-items:stretch;
+  flex-wrap:wrap;
+  gap:12px;
+  width:min(100%, 510px);
+}
+.hero-actions > .btn-yellow,
+.hero-actions > .hero-text-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  box-sizing:border-box;
+  min-height:58px;
+  height:58px;
+  margin:0;
+  padding:0 19px;
+  border-radius:2px;
+  text-decoration:none;
+  line-height:1.1;
+  white-space:nowrap;
+  gap:12px;
+  vertical-align:middle;
+}
+.hero-actions > .btn-yellow{
+  flex:1 1 245px;
+  border:1px solid var(--yellow);
+  font-size:11px;
+}
+.hero-actions > .hero-text-link{
+  flex:1 1 230px;
+  border:1px solid rgba(255,255,255,.7);
+  background:rgba(8,22,34,.35);
+  color:#fff;
+  font:800 10.5px/1.1 var(--tech);
+  letter-spacing:.055em;
+  transition:border-color .25s ease,background-color .25s ease;
+}
+.hero-actions > .hero-text-link:hover,
+.hero-actions > .hero-text-link:focus-visible{
+  border-color:var(--yellow);
+  background:rgba(8,22,34,.68);
+}
+.hero-actions > .btn-yellow b,
+.hero-actions > .hero-text-link span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  margin:0;
+  padding:0;
+  font-size:22px;
+  line-height:1;
+  font-weight:400;
+}
+.hero-actions > .hero-text-link span{font-size:19px}
+.hero-base-grid{align-items:stretch;min-height:55px}
+.hero-base-grid>span{min-width:0;align-items:center}
+.hero-base-grid>a{
+  min-height:55px;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  line-height:1.2;
+  white-space:nowrap;
+}
+.hero-base-grid>a b{display:inline-flex;align-items:center;line-height:1}
+@media(max-width:760px){
+  .hero-actions{width:min(100%,500px);gap:10px}
+  .hero-actions > .btn-yellow,
+  .hero-actions > .hero-text-link{min-height:54px;height:54px;padding:0 15px}
+  .hero-actions > .btn-yellow{font-size:10px}
+  .hero-actions > .hero-text-link{font-size:10px}
+}
+@media(max-width:520px){
+  .hero-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    width:min(100%,325px);
+    gap:9px;
+    margin-top:18px;
+  }
+  .hero-actions > .btn-yellow,
+  .hero-actions > .hero-text-link{
+    width:100%;
+    min-width:0;
+    height:48px;
+    min-height:48px;
+    padding:0 16px;
+    font-size:11px;
+  }
+  .hero-actions > .hero-text-link{font-size:10.5px}
+  .hero-actions > .btn-yellow b,
+  .hero-actions > .hero-text-link span{font-size:20px}
+}
+@media(max-width:355px){
+  .hero-actions{width:100%;gap:7px;margin-top:14px}
+  .hero-actions > .btn-yellow,
+  .hero-actions > .hero-text-link{height:46px;min-height:46px;padding:0 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-actions > .hero-text-link{transition:none}
+}

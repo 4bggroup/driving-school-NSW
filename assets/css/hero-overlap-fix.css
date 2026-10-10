@@ -1,0 +1,81 @@
+/* V9.3 — structural hero layout correction, not a cosmetic button tweak.
+   The previous 87vh/fixed-height hero and absolute feature rail concealed the CTAs
+   on shorter desktop viewports. The hero content and feature rail now participate
+   in normal document flow. */
+.hero {
+  height: auto !important;
+  min-height: 0 !important;
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+}
+.hero > .hero-inner {
+  width: min(1450px, calc(100% - 100px));
+  margin-inline: auto;
+  height: auto !important;
+  min-height: clamp(640px, calc(100svh - 86px), 830px);
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding-top: clamp(68px, 8svh, 108px);
+  padding-bottom: clamp(85px, 9svh, 125px);
+}
+.hero .hero-copy {
+  padding-block: 0 !important;
+  max-width: 100%;
+}
+.hero .hero-actions {
+  position: relative;
+  z-index: 6;
+}
+.hero > .hero-base {
+  position: relative !important;
+  inset: auto !important;
+  width: 100%;
+  flex: 0 0 auto;
+  z-index: 5;
+  margin: 0;
+}
+.hero .hero-base-grid {
+  min-height: 62px;
+}
+.hero .hero-base-grid > span {padding-top: 19px; padding-bottom: 19px;}
+/* Keep decorative roundel well away from the action row on mid-sized laptops. */
+@media (min-width: 761px) and (max-width: 1300px) {
+  .hero > .hero-inner {width: calc(100% - 70px);}
+  .hero .hero-copy {width: min(790px, 73%);}
+  .hero .hero-stamp {bottom: 38px; right: 8px;}
+}
+@media (max-width: 1050px) {
+  .hero > .hero-inner {
+    width: calc(100% - 56px);
+    min-height: 640px;
+    padding-top: 65px;
+    padding-bottom: 85px;
+  }
+}
+@media (max-width: 760px) {
+  .hero > .hero-inner {
+    width: calc(100% - 40px);
+    display: block;
+    min-height: 0;
+    padding-top: 76px;
+    padding-bottom: 86px;
+  }
+  .hero .hero-copy {width: 100%;}
+  .hero .hero-stamp {bottom: 25px;}
+  .hero .hero-base-grid {min-height: 0;}
+}
+@media (max-width: 520px) {
+  .hero > .hero-inner {
+    width: calc(100% - 34px);
+    padding-top: 67px;
+    padding-bottom: 70px;
+  }
+  .hero .hero-actions {margin-bottom: 0;}
+  .hero .hero-base-grid > span {padding-block: 15px;}
+}
+@media (max-width: 355px) {
+  .hero > .hero-inner {padding-top: 58px; padding-bottom: 60px;}
+}

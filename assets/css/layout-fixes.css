@@ -1,0 +1,89 @@
+/* V9.1 design fixes: consistent alignment, better mobile proportions and booking spacing.
+   Keep existing design language and interaction/animation logic unchanged. */
+:root{--nav-height:86px}
+/* A permanently sticky header avoids position switching while anchor-scroll runs. */
+.site-header,.site-header.scrolled{position:sticky;top:0;z-index:98}
+.site-header.scrolled{box-shadow:0 12px 34px #00000022}
+html{scroll-padding-top:106px}
+section[id],.booking-form-wrap{scroll-margin-top:106px}
+.head-shell{justify-content:space-between}
+.menu-button{margin-left:auto;flex:0 0 48px}
+/* Prevent the yellow seal lettering from crowding its edges. */
+.hero-stamp{padding:13px}
+.hero-stamp strong{font-size:clamp(18px,1.9vw,24px);line-height:.94;letter-spacing:-.015em}
+.hero-stamp span{font-size:9px;line-height:1.22}
+/* Duration: strong typographic hierarchy without repeating the duration twice. */
+.options-grid.duration-grid .duration-time{min-height:91px}
+.options-grid.duration-grid h3{line-height:1.02;letter-spacing:-.012em;font-size:clamp(26px,2.5vw,37px);margin:12px 0 18px}
+.options-grid.duration-grid article{border-radius:4px}
+.options-grid.duration-grid article .option-top{line-height:1.3}
+.options-grid.duration-grid article .option-top span{min-width:0}
+.options-grid.duration-grid article button{min-height:52px}
+/* Booking selections: clearer selected state, less cramped numeral + unit. */
+.booking-step .duration-choices{gap:12px}
+.duration-choice{border-radius:7px}
+.duration-choice:has(input:checked){background:#ffef9b;border-color:#a77b00;box-shadow:inset 0 0 0 1px #a77b00,0 8px 24px #111e2810}
+.duration-choice:has(input:checked) .choice-check{color:#172b3c}
+.booking-form-wrap{min-width:0}
+/* Offset the booking form when the wizard advances on an already scrolled page. */
+@media(max-width:1100px){
+  .options-grid.duration-grid h3{font-size:clamp(27px,3.9vw,39px)}
+  .options-grid.duration-grid article:last-child{grid-column:auto!important}
+}
+@media(max-width:760px){
+  :root{--nav-height:72px}
+  html{scroll-padding-top:86px}
+  section[id],.booking-form-wrap{scroll-margin-top:86px}
+  .head-shell{justify-content:space-between}
+  .logo{flex:0 1 auto}
+  .menu-button{margin-left:auto}
+  .hero-stamp{width:100px;height:100px;right:20px;bottom:79px;padding:10px}
+  .hero-stamp strong{font-size:15px}
+  .hero-stamp span{font-size:7px}
+}
+@media(max-width:640px){
+  /* Four compact duration tiles on mobile instead of a 2,500px single-column stack. */
+  .options-grid.duration-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .options-grid.duration-grid article,.options-grid.duration-grid article.featured-option{padding:18px 13px;min-height:335px;transform:none;overflow:hidden}
+  .options-grid.duration-grid .option-top{font-size:8px;letter-spacing:.01em;gap:4px;min-height:33px;display:flex;align-items:flex-start;justify-content:space-between}
+  .options-grid.duration-grid .option-top b{font-size:17px;line-height:1}
+  .options-grid.duration-grid .duration-time{min-height:66px;gap:5px;margin-top:7px;align-items:baseline}
+  .options-grid.duration-grid .duration-time strong{font-size:clamp(57px,14vw,76px);line-height:.85}
+  .options-grid.duration-grid .duration-time span{font-size:10px}
+  .options-grid.duration-grid h3{font-size:clamp(25px,6.2vw,32px);margin:9px 0 10px;line-height:1.02;min-height:54px}
+  .options-grid.duration-grid p{min-height:0;font-size:11px;line-height:1.38;margin:0 0 12px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+  .options-grid.duration-grid ul{display:none}
+  .options-grid.duration-grid button{min-height:45px;padding:10px 8px;font-size:9px;letter-spacing:0;white-space:normal;line-height:1.2}
+  .options-grid.duration-grid button span{font-size:14px}
+  .duration-intro-row{padding:14px 0 17px}
+  .booking-step .duration-choices{gap:9px}
+  .duration-choice{min-height:125px}
+  .choice-time strong{font-size:clamp(51px,13vw,67px)}
+}
+@media(max-width:520px){
+  /* The old round stamp obscured the car and its text overflowed on narrow screens. */
+  .hero-stamp{display:none}
+  .hero-inner{padding-top:71px}
+  .hero h1{font-size:clamp(66px,15.4vw,92px);line-height:.81}
+  .hero-copy>p{max-width:350px;line-height:1.55}
+  .booking-form-wrap{padding:24px 16px}
+  .booking-step .duration-choices{gap:8px}
+  .duration-choice{min-height:126px;padding:13px 12px}
+  .choice-time{gap:4px}
+  .choice-time strong{font-size:clamp(55px,15vw,67px)}
+  .choice-label{font-size:9px;line-height:1.3}
+  .booking-focus-select{font-size:14px}
+  .wizard-header h3{overflow-wrap:normal}
+}
+@media(max-width:355px){
+  .hero h1{font-size:clamp(60px,17vw,69px)}
+  .options-grid.duration-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .options-grid.duration-grid article{padding:14px 9px;min-height:340px}
+  .options-grid.duration-grid .duration-time strong{font-size:51px}
+  .options-grid.duration-grid .duration-time span{font-size:9px}
+  .options-grid.duration-grid h3{font-size:24px;min-height:52px}
+  .options-grid.duration-grid p{font-size:10px}
+  .duration-choice{padding:12px 10px}
+  .choice-time strong{font-size:51px}
+}
+@media(prefers-reduced-motion:reduce){.options-grid.duration-grid article,.duration-choice{transition:none!important}}
